@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1(style='background:green;color:white;padding:10px') Cache Layers:
+  ol
+    each val in title
+      li #{val}
+      a(href='./cachelayers/#{val}/meta') meta 
+      &nbsp &nbsp &nbsp
+      a(href='./cachelayers/#{val}/hotspot') hotspot
