@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="http://localhost/arcgis_js_api/library/3.13/3.13/esri/css/esri.css">
+    <script src="http://localhost/arcgis_js_api/library/3.13/3.13/init.js"></script>
+    <script src="./MultiLineTextSymbol.js"></script>
+    <script>
+        var map;
+        require([
+            "dojo/query",
+            "dojo/on",
+            "dojo/_base/array",
+            "esri/map",
+            "esri/geometry/Extent",
+            "esri/layers/ArcGISTiledMapServiceLayer",
+            "esri/layers/ArcGISDynamicMapServiceLayer",
+            "esri/layers/FeatureLayer",
+            "esri/layers/LabelLayer",
+            "esri/Color",
+            "esri/symbols/TextSymbol",
+            "esri/renderers/SimpleRenderer",
+            "dojo/domReady!"],
+                function (dojoQuery,on, arrayUtil, Map, Extent,Tiled, Dynamic, FeatureLayer, LabelLayer,Color, TextSymbol, SimpleRenderer) {
+                    map = new Map("mapDiv", {
+                        'extent': new Extent({ xmin: 13268217, ymin: 2995090, xmax: 13293449, ymax: 3017609, spatialReference: { wkid: 102100 },'level':18 })
+                    });
+                    var basemapLayerURL = new Tiled("http://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer");
+                    map.addLayer(basemapLayerURL);
+
+                    var poiLayer = new FeatureLayer("http://www.seanpc.com:6080/arcgis/rest/services/FZMap/FeatureServer/0", {
+                        id: "poi",
+                        mode: esri.layers.FeatureLayer.MODE_ONDEMAND,
+                        outFields: ["*"],
+                        tileWidth: 1024,
+                        tileHeight: 1024
+                    });
+                    poiLayer.setMaxScale(10000);
+                    //poiLayer.setMinScale(500);
+                    map.addLayer(poiLayer);
+
+                    var symbol = new TextSymbol();
+                    symbol.setAngle = 0;
+                    symbol.setColor(new Color([255, 255, 255, 255]));
+                    var renderer = new SimpleRenderer(symbol);
+                    var labelLayer = new LabelLayer();
+                    //labelLayer.addFeatureLayer(poiLayer, renderer, "{newname}");
+                    //map.addLayer(labelLayer);
+                    
+
+                });
+    </script>
+    <style>
+        html, body, #mapDiv {
+            height: 100%; width: 100%; margin: 0; padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="mapDiv"></div>
+</body>
+</html>

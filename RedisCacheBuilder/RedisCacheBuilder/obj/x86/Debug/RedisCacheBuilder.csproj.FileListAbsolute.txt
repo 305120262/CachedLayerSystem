@@ -1,0 +1,12 @@
+D:\AppDatas\VS2013\Projects\RedisCacheBuilder\RedisCacheBuilder\bin\Debug\RedisCacheBuilder.exe
+D:\AppDatas\VS2013\Projects\RedisCacheBuilder\RedisCacheBuilder\bin\Debug\RedisCacheBuilder.pdb
+D:\AppDatas\VS2013\Projects\RedisCacheBuilder\RedisCacheBuilder\bin\Debug\StackExchange.Redis.dll
+D:\AppDatas\VS2013\Projects\RedisCacheBuilder\RedisCacheBuilder\bin\Debug\StackExchange.Redis.pdb
+D:\AppDatas\VS2013\Projects\RedisCacheBuilder\RedisCacheBuilder\bin\Debug\StackExchange.Redis.xml
+D:\AppDatas\VS2013\Projects\RedisCacheBuilder\RedisCacheBuilder\obj\x86\Debug\RedisCacheBuilder.csprojResolveAssemblyReference.cache
+D:\AppDatas\VS2013\Projects\RedisCacheBuilder\RedisCacheBuilder\obj\x86\Debug\RedisCacheBuilder.Form1.resources
+D:\AppDatas\VS2013\Projects\RedisCacheBuilder\RedisCacheBuilder\obj\x86\Debug\RedisCacheBuilder.Properties.Resources.resources
+D:\AppDatas\VS2013\Projects\RedisCacheBuilder\RedisCacheBuilder\obj\x86\Debug\RedisCacheBuilder.csproj.GenerateResource.Cache
+D:\AppDatas\VS2013\Projects\RedisCacheBuilder\RedisCacheBuilder\obj\x86\Debug\RedisCacheBuilder.exe
+D:\AppDatas\VS2013\Projects\RedisCacheBuilder\RedisCacheBuilder\obj\x86\Debug\RedisCacheBuilder.pdb
+D:\AppDatas\VS2013\Projects\RedisCacheBuilder\RedisCacheBuilder\obj\x86\Debug\RedisCacheBuilder.SuggestGridSizeForm.resources

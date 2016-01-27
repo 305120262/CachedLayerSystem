@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="http://localhost/arcgis_js_api/library/3.13/3.13/esri/css/esri.css">
+
+    <script>
+        var dojoConfig = {
+            paths: {
+                extras: location.pathname.replace(/\/[^/]+$/, "") + "/extras"
+            }
+        };
+    </script>
+    <script src="http://localhost/arcgis_js_api/library/3.13/3.13/init.js"></script>
+    <script src="./MultiLineTextSymbol.js"></script>
+    <script>
+        require([
+            "esri/request",
+            "esri/arcgis/utils",
+            "esri/IdentityManager",
+            "esri/config",
+            "esri/map",
+            "esri/geometry/Extent",
+            "esri/layers/ArcGISTiledMapServiceLayer",
+            "esri/layers/ArcGISDynamicMapServiceLayer",
+            "esri/layers/FeatureLayer",
+            "esri/layers/LabelLayer",
+            "esri/symbols/TextSymbol",
+            "esri/renderers/SimpleRenderer",
+            "extras/CacheLayer",
+            "extras/CacheLabelLayer",
+            "dojo/on",
+            "dojo/domReady!"],
+                function (esriRequest, arcgisUtils, IdentityManager, esriConfig, Map, Extent, Tiled, Dynamic, FeatureLayer, LabelLayer, TextSymbol, SimpleRenderer, CacheLayer, CacheLabelLayer, on) {
+                    var map = new Map("mapDiv", {
+                        extent: new Extent({ xmin: 13268217, ymin: 2995090, xmax: 13293449, ymax: 3017609, spatialReference: { wkid: 102100 } })
+                    });
+                    var basemapLayerURL = new Tiled("http://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer");
+                    map.addLayer(basemapLayerURL);
+
+                    // var basemapLayerURL = new Dynamic();
+                    // map.addLayer(basemapLayerURL);
+
+                    //Add MouseOver EventHandler
+                    var onMouseOver = function (event) {
+                        event.graphic.symbol.size = event.graphic.symbol.size * 10;
+                        clayer.redraw();
+                    };
+                    var onMouseOut = function (event) {
+                        event.graphic.symbol.size = event.graphic.symbol.size / 10;
+                        clayer.redraw();
+                    };
+
+                    //Add CacheLayer
+                    //mode:normal,grid,grid-only
+                    var option = { "url": "http://localhost:3000/cachelayers/POI", "minScale": 1000000, "maxScale": 0, "mode": "normal", "buffer": 20};
+                    var clayer = new CacheLayer(option);
+                    on(clayer, "mouse-over", onMouseOver);
+                    on(clayer, "mouse-out", onMouseOut);
+                    map.addLayer(clayer);
+
+                    //Add Annotation CacheLayer
+                    //var aoption = { "url": "http://localhost:3000/cachelayers/POAnno", "minScale": 10000, "maxScale": 0, "mode": "hotspot", "buffer": 20 };
+                    //var alayer = new CacheLabelLayer(aoption);
+                    //map.addLayer(alayer);
+
+                });
+    </script>
+    <style>
+        html, body, #mapDiv {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="mapDiv"></div>
+</body>
+</html>
